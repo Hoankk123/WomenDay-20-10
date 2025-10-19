@@ -29,7 +29,6 @@
         }
     </style>
 
-    <!-- aa2 -->
     <style>
         * {
             margin: 0;
@@ -949,18 +948,6 @@
         top: 80%;">Click me now !</p>
     </div>
 
-    <!-- <div class="box-content">
-        <i class="fa-solid fa-xmark"></i>
-        <div class="content1">
-            <div class="image-decorate">
-                <div class="textLetter">
-                    <h2></h2>
-                    <p class="contentLetter"></p>
-                </div>
-            </div>
-        </div> -->
-
-
     <div class="wrapperLetterForm" style="display: none;">
         <div class="boxLetter">
             <i class="fa-solid fa-xmark"></i>
@@ -999,7 +986,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 
-    <!-- aa3 -->
     <script>
 
         (() => {
@@ -1249,6 +1235,54 @@
         });
 
     </script>
+    
+   <audio id="bgMusic" src="Resource/audio/nhac2010.mp3" loop></audio>
+
+
+<button id="musicBtn" 
+        style="
+    
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #ffb6c1;
+        border: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        font-size: 20px;
+        cursor: pointer;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        transition: transform 0.2s;">
+    🎵
+</button>
+
+<script>
+const btn = document.getElementById("musicBtn");
+const music = document.getElementById("bgMusic");
+let playing = false;
+
+btn.addEventListener("click", () => {
+    if (!playing) {
+        music.play()
+        .then(() => {
+            playing = true;
+            btn.innerHTML = "⏸"; // đổi icon
+            btn.style.transform = "rotate(360deg)";
+        })
+        .catch(err => {
+            console.log("Không phát được nhạc:", err);
+            alert("Trình duyệt chặn tự phát nhạc — hãy bấm lại nút nhé!");
+        });
+    } else {
+        music.pause();
+        playing = false;
+        btn.innerHTML = "🎵";
+        btn.style.transform = "rotate(0deg)";
+    }
+});
+</script>
+
 </body>
 
 </html>
